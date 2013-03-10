@@ -1,7 +1,7 @@
 {
   "name": "gyp-merge",
   "description": "Functions to merge data structures from gyp files",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "Aria Stewart <aredridel@nbtsc.org>",
   "main": "index.js",
   "devDependencies": {
