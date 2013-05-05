@@ -1,7 +1,7 @@
 var test = require('tap').test;
 
 test("simple dictionary vs simple dictionary", function(t) {
-    var out = require('..')().mergeDictionary( { a: 1, b: "test" }, { a: 2, c: "new" });
+    var out = require('..')( { a: 1, b: "test" }, { a: 2, c: "new" });
     t.equal(out.a, 2, "a should be replaced with 2");
     t.equal(out.b, "test", "b should be replaced with 'test'");
     t.equal(out.c, "new", "c should be 'new'");
@@ -9,7 +9,7 @@ test("simple dictionary vs simple dictionary", function(t) {
 });
 
 test("recursive dictionary merge", function(t) {
-    var out = require('..')().mergeDictionary( { a: { b: { c: 1 } } }, { a: { b: { d: 2 }, f: 1 }, e: 3 } );
+    var out = require('..')( { a: { b: { c: 1 } } }, { a: { b: { d: 2 }, f: 1 }, e: 3 } );
     t.equal(out.a.b.c, 1, "a.b.c should remain 1");
     t.equal(out.a.b.d, 2, "a.b.d should have been added as 2");
     t.equal(out.e, 3, "e should have been added as 3");
@@ -18,7 +18,7 @@ test("recursive dictionary merge", function(t) {
 });
 
 test("dictionary with list merges", function(t) {
-    var out = require('..')().mergeDictionary(
+    var out = require('..')(
         { a: [1, 2, 3], b: [4, 5, 6], c: [7, 8, 9], d: [10, 11, 12] },
         { a: ["A", "B", "C"], "b?": ["D", "E", "F"], "c+": ["G", "H", "I"], "d=" : ["J", "K", "L" ]}
     );
@@ -32,7 +32,7 @@ test("dictionary with list merges", function(t) {
 });
 
 test("handle singletons in list merges", function (t) {
-    var out = require('..')().mergeDictionary(
+    var out = require('..')(
         {
             'defines': [
                 'NDEBUG',
@@ -59,7 +59,7 @@ test("handle singletons in list merges", function (t) {
 });
 
 test("avoid handling singletons in list merges", function (t) {
-    var out = require('..')({noSingletons: true}).mergeDictionary(
+    var out = require('..')(
         {
             'defines': [
                 'NDEBUG',
@@ -72,7 +72,7 @@ test("avoid handling singletons in list merges", function (t) {
                 'NDEBUG'
             ]
         },
-        true
+        { noSingletons: true }
     );
 
     t.deepEqual(out, {

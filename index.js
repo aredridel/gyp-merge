@@ -1,7 +1,9 @@
-module.exports = function(config) {
+module.exports = function merge(src, dest, config) {
     if (!config) config = {
         noSingletons: false
     };
+
+    return mergeDictionary(src, dest);
 
     function mergeDictionary(dest, src) {
         var out = Object.create(dest);
@@ -58,9 +60,4 @@ module.exports = function(config) {
             return out;
         }
     }
-
-    return {
-        mergeDictionary: mergeDictionary,
-        mergeList: mergeList
-    };
 };
