@@ -5,7 +5,7 @@
   "author": "Aria Stewart <aredridel@nbtsc.org>",
   "main": "index.js",
   "devDependencies": {
-    "tap": "~9.0.3"
+    "tap": "~10.2.2"
   },
   "directories": {
     "test": "test"
