@@ -12,5 +12,15 @@
   },
   "scripts": {
     "test": "tap ./test"
-  }
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aredridel/gyp-merge.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aredridel/gyp-merge/issues"
+  },
+  "homepage": "https://github.com/aredridel/gyp-merge#readme"
 }
